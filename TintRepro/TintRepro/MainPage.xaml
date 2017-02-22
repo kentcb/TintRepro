@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TintRepro"
+             xmlns:ffil="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffilt="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="TintRepro.MainPage">
+
+    <StackLayout>
+        <ffil:CachedImage
+            Source="https://i.ytimg.com/vi/yaqe1qesQ8c/maxresdefault.jpg"
+            DownsampleToViewSize="True"
+            Aspect="AspectFill"
+            HeightRequest="150">
+        </ffil:CachedImage>
+        <ffil:CachedImage
+            x:Name="tintedImage"
+            Source="https://i.ytimg.com/vi/yaqe1qesQ8c/maxresdefault.jpg"
+            DownsampleToViewSize="True"
+            Aspect="AspectFill"
+            HeightRequest="150">
+            <ffil:CachedImage.Transformations>
+                <!--<ffilt:TintTransformation R="23" G="27" B="38" A="178"/>-->
+                <ffilt:TintTransformation x:Name="tint"/>
+            </ffil:CachedImage.Transformations>
+        </ffil:CachedImage>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Text="R:"/>
+            <Entry
+                x:Name="red"
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="23"
+                Keyboard="Numeric"/>
+            <Label
+                Grid.Row="1"
+                Text="G:"/>
+            <Entry
+                x:Name="green"
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="27"
+                Keyboard="Numeric"/>
+            <Label
+                Grid.Row="2"
+                Text="B:"/>
+            <Entry
+                x:Name="blue"
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="38"
+                Keyboard="Numeric"/>
+            <Label
+                Grid.Row="3"
+                Text="A:"/>
+            <Entry
+                x:Name="alpha"
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="178"
+                Keyboard="Numeric"/>
+
+            <Button
+                x:Name="button"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Text="Update"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
